@@ -9,25 +9,10 @@ import { PortfolioSection } from './components/PortfolioSection';
 import { InteractiveTerminal } from './components/InteractiveTerminal';
 import { ContactSection } from './components/ContactSection';
 import { PrintResumeView } from './components/PrintResumeView';
-import { ResumeCustomizerModal } from './components/ResumeCustomizerModal';
-import { ArrowUp, Mail, Globe } from 'lucide-react';
-
-const STORAGE_KEY = 'pranav_portfolio_resume_v4';
+import { ArrowUp, Mail } from 'lucide-react';
 
 export default function App() {
-  const [resumeData, setResumeData] = useState<FullResumeData>(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        return JSON.parse(saved);
-      }
-    } catch (e) {
-      console.error('Failed to load saved resume data', e);
-    }
-    return initialResumeData;
-  });
-
-  const [isCustomizerOpen, setIsCustomizerOpen] = useState(false);
+  const [resumeData] = useState<FullResumeData>(initialResumeData);
   const [isPrintView, setIsPrintView] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
 
@@ -38,24 +23,6 @@ export default function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const handleSaveResumeData = (updated: FullResumeData) => {
-    setResumeData(updated);
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
-    } catch (e) {
-      console.error('Failed to persist resume data', e);
-    }
-  };
-
-  const handleResetResumeData = () => {
-    setResumeData(initialResumeData);
-    try {
-      localStorage.removeItem(STORAGE_KEY);
-    } catch (e) {
-      console.error('Failed to clear storage', e);
-    }
-  };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -78,7 +45,6 @@ export default function App() {
 
       {/* Floating Sticky Navigation Bar */}
       <Navbar
-        onOpenCustomizer={() => setIsCustomizerOpen(true)}
         onTogglePrintView={() => setIsPrintView(prev => !prev)}
         isPrintView={isPrintView}
       />
@@ -157,18 +123,12 @@ export default function App() {
             <span>•</span>
             <div className="flex items-center gap-2">
               <a
-                href={resumeData.portfolioDetails.url}
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(resumeData.profile.email)}`}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="hover:text-emerald-400 transition-colors"
-                aria-label="Portfolio"
-              >
-                <Globe className="w-4 h-4" />
-              </a>
-              <a
-                href={`mailto:${resumeData.profile.email}`}
-                className="hover:text-emerald-400 transition-colors"
-                aria-label="Email"
+                aria-label="Email via Gmail"
+                title="Send email via Gmail"
               >
                 <Mail className="w-4 h-4" />
               </a>
@@ -189,15 +149,6 @@ export default function App() {
           <ArrowUp className="w-4 h-4" />
         </button>
       )}
-
-      {/* Live Resume Customizer Modal */}
-      <ResumeCustomizerModal
-        data={resumeData}
-        isOpen={isCustomizerOpen}
-        onClose={() => setIsCustomizerOpen(false)}
-        onSave={handleSaveResumeData}
-        onReset={handleResetResumeData}
-      />
     </div>
   );
 }

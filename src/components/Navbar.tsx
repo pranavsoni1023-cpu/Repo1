@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { FileText, Edit3, Send, Menu, X, ArrowUpRight, Terminal, Sparkles } from 'lucide-react';
+import { FileText, Send, Menu, X, ArrowUpRight, Terminal, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface NavbarProps {
-  onOpenCustomizer: () => void;
   onTogglePrintView: () => void;
   isPrintView: boolean;
 }
 
-export function Navbar({ onOpenCustomizer, onTogglePrintView, isPrintView }: NavbarProps) {
+export function Navbar({ onTogglePrintView, isPrintView }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
@@ -97,17 +96,6 @@ export function Navbar({ onOpenCustomizer, onTogglePrintView, isPrintView }: Nav
 
         {/* Action Buttons */}
         <div className="hidden sm:flex items-center gap-2.5">
-          {/* Customizer Button */}
-          <button
-            onClick={onOpenCustomizer}
-            id="nav-edit-resume-btn"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium text-stone-300 bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] hover:text-white transition-colors"
-            title="Edit resume details or paste custom bullet points"
-          >
-            <Edit3 className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Customize</span>
-          </button>
-
           {/* Toggle Recruiter Print/PDF View */}
           <button
             onClick={onTogglePrintView}
@@ -177,24 +165,13 @@ export function Navbar({ onOpenCustomizer, onTogglePrintView, isPrintView }: Nav
               ))}
             </nav>
 
-            <div className="pt-3 border-t border-white/10 grid grid-cols-2 gap-2">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenCustomizer();
-                }}
-                className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs font-mono font-medium text-stone-200 bg-white/[0.06] border border-white/10"
-              >
-                <Edit3 className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Customize Data</span>
-              </button>
-
+            <div className="pt-3 border-t border-white/10">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onTogglePrintView();
                 }}
-                className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs font-mono font-medium text-stone-200 bg-white/[0.06] border border-white/10"
+                className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs font-mono font-medium text-stone-200 bg-white/[0.06] border border-white/10 hover:bg-white/[0.1] transition-colors"
               >
                 <FileText className="w-3.5 h-3.5 text-sky-400" />
                 <span>A4 Resume View</span>

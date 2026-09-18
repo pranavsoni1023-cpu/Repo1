@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ExternalLink, Globe, FileSpreadsheet, Calculator, FileText, CheckCircle2, ArrowUpRight } from 'lucide-react';
+import { Globe, FileSpreadsheet, Calculator, FileText, CheckCircle2 } from 'lucide-react';
 
 interface PortfolioSectionProps {
   portfolioDetails: {
@@ -31,10 +31,11 @@ export function PortfolioSection({
   return (
     <section id="abilities" className="py-20 relative">
       <span id="portfolio" className="absolute -top-24 pointer-events-none" />
+      <span id="selected-work" className="absolute -top-24 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="mb-12">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-emerald-400 mb-2">
               <Globe className="w-3.5 h-3.5" />
@@ -47,16 +48,6 @@ export function PortfolioSection({
               {portfolioDetails.description}
             </p>
           </div>
-
-          <a
-            href={portfolioDetails.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20 text-xs font-mono font-medium transition-all self-start md:self-auto"
-          >
-            <span>View Practical Work</span>
-            <ArrowUpRight className="w-4 h-4 text-emerald-400" />
-          </a>
         </div>
 
         {/* Curated Collection Grid */}

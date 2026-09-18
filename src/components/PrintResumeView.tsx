@@ -87,10 +87,6 @@ export function PrintResumeView({ data, onClose }: PrintResumeViewProps) {
               {profile.location}
             </span>
             <span>•</span>
-            <a href={portfolioDetails.url} target="_blank" rel="noreferrer" className="text-blue-700 hover:underline">
-              Portfolio
-            </a>
-            <span>•</span>
             <span className="text-emerald-800 font-medium">{profile.remoteAvailability}</span>
           </div>
         </div>

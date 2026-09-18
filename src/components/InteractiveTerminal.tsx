@@ -21,15 +21,9 @@ export function InteractiveTerminal({ data }: InteractiveTerminalProps) {
   const [history, setHistory] = useState<TerminalHistoryItem[]>([
     {
       id: 'init-1',
-      command: 'status',
-      output: `${data.profile.name} — ${data.profile.title} · ${data.profile.remoteAvailability}`,
+      command: 'welcome',
+      output: 'Ask me anything',
       timestamp: '00:01',
-    },
-    {
-      id: 'init-2',
-      command: 'help',
-      output: 'Ask any natural-language question about this portfolio. The AI scans verified portfolio content to give concise, factual answers.',
-      timestamp: '00:02',
     }
   ]);
 
@@ -63,8 +57,8 @@ export function InteractiveTerminal({ data }: InteractiveTerminalProps) {
     if (q.includes('educat') || q.includes('bba') || q.includes('bca') || q.includes('degree')) {
       return `Pranav is pursuing concurrent Bachelor of Business Administration (BBA) and Bachelor of Computer Applications (BCA) degrees at Manipal University Jaipur (Online).`;
     }
-    if (q.includes('contact') || q.includes('email') || q.includes('reach')) {
-      return `Email: ${data.profile.email}\nPhone: ${data.profile.phone || '+91 98765 43210'}\nLocation: ${data.profile.location}\nStatus: ${data.profile.remoteAvailability}`;
+    if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('phone') || q.includes('call')) {
+      return `Email: ${data.profile.email}\nPhone: ${data.profile.phone || '+91 80056 55458'}\nLocation: ${data.profile.location}\nStatus: ${data.profile.remoteAvailability}`;
     }
     return `This information is not available in the verified portfolio content.`;
   };
@@ -327,7 +321,7 @@ Availability: ${data.profile.remoteAvailability}`;
                 disabled={isProcessing}
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder={isProcessing ? "Processing question..." : "Ask any question or type 'help'..."}
+                placeholder={isProcessing ? "Processing question..." : "Ask me anything..."}
                 className="bg-transparent border-none outline-none text-white w-full placeholder-stone-600 font-mono text-xs disabled:opacity-50"
               />
               <CornerDownLeft className="w-3.5 h-3.5 text-stone-500 shrink-0" />

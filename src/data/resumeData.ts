@@ -10,8 +10,8 @@ export const initialResumeData: FullResumeData = {
     phone: "+91 80056 55458",
     location: "Jaipur, Rajasthan, India",
     remoteAvailability: "Open to Remote Opportunities",
-    linkedin: "https://linkedin.com/in/pranav-soni",
-    portfolio: "https://pranavsoni.dev/portfolio",
+    linkedin: "",
+    portfolio: "",
     github: "",
     status: "Open to Remote Opportunities",
     highlights: [
@@ -214,7 +214,7 @@ export const initialResumeData: FullResumeData = {
       institution: "Manipal University Jaipur — Online",
       degree: "Bachelor of Business Administration (BBA)",
       field: "Business Administration & Management",
-      period: "Ongoing (Concurrent)",
+      period: "Ongoing",
       location: "Jaipur, India",
       coursework: [
         "Financial Accounting & Cost Management",
@@ -230,7 +230,7 @@ export const initialResumeData: FullResumeData = {
       institution: "Manipal University Jaipur — Online",
       degree: "Bachelor of Computer Applications (BCA)",
       field: "Computer Applications & Information Technology",
-      period: "Ongoing (Concurrent)",
+      period: "Ongoing",
       location: "Jaipur, India",
       coursework: [
         "Database Management Systems & Relational SQL",
@@ -283,7 +283,7 @@ export const initialResumeData: FullResumeData = {
   ],
 
   portfolioDetails: {
-    url: "https://pranavsoni.dev/portfolio",
+    url: "",
     description: "Structured business operations dashboards, accounting simulations, and customer tracking systems.",
     curatedItems: [
       {

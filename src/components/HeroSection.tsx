@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { ResumeProfile } from '../types';
-import { ArrowDown, Copy, Check, ExternalLink, Mail, MapPin, Globe, FileDown, Briefcase, Laptop } from 'lucide-react';
+import { ArrowDown, Copy, Check, ExternalLink, Mail, MapPin, Globe, FileDown, Briefcase, Laptop, Linkedin } from 'lucide-react';
 
 interface HeroSectionProps {
   profile: ResumeProfile;
@@ -110,6 +110,20 @@ export function HeroSection({ profile, coreCompetencies, onTogglePrintView }: He
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-stone-300">
                 <span>{profile.phone}</span>
               </div>
+            )}
+
+            {profile.linkedin && (
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-stone-300 hover:text-white hover:border-sky-500/40 transition-colors"
+                title="LinkedIn Profile"
+              >
+                <Linkedin className="w-3.5 h-3.5 text-sky-400" />
+                <span>LinkedIn</span>
+                <ExternalLink className="w-2.5 h-2.5 text-stone-500" />
+              </a>
             )}
 
             <a

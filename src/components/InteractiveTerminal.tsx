@@ -57,8 +57,8 @@ export function InteractiveTerminal({ data }: InteractiveTerminalProps) {
     if (q.includes('educat') || q.includes('bba') || q.includes('bca') || q.includes('degree')) {
       return `Pranav is pursuing concurrent Bachelor of Business Administration (BBA) and Bachelor of Computer Applications (BCA) degrees at Manipal University Jaipur (Online).`;
     }
-    if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('phone') || q.includes('call')) {
-      return `Email: ${data.profile.email}\nPhone: ${data.profile.phone || '+91 80056 55458'}\nLocation: ${data.profile.location}\nStatus: ${data.profile.remoteAvailability}`;
+    if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('phone') || q.includes('call') || q.includes('linkedin')) {
+      return `Email: ${data.profile.email}\nPhone: ${data.profile.phone || '+91 80056 55458'}\nLocation: ${data.profile.location}\nLinkedIn: ${data.profile.linkedin || 'https://www.linkedin.com/in/pranav1023/'}\nStatus: ${data.profile.remoteAvailability}`;
     }
     return `This information is not available in the verified portfolio content.`;
   };
@@ -185,7 +185,9 @@ export function InteractiveTerminal({ data }: InteractiveTerminalProps) {
 
     if (lower === 'contact') {
       const output = `Email:        ${data.profile.email}
+Phone:        ${data.profile.phone || '+91 80056 55458'}
 Location:     ${data.profile.location}
+LinkedIn:     ${data.profile.linkedin || 'https://www.linkedin.com/in/pranav1023/'}
 Status:       ${data.profile.status}
 Availability: ${data.profile.remoteAvailability}`;
       setHistory(prev => [...prev, { id: String(Date.now()), command: trimmed, output, timestamp: time }]);

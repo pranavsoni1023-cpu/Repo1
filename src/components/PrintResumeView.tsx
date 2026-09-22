@@ -86,6 +86,19 @@ export function PrintResumeView({ data, onClose }: PrintResumeViewProps) {
               <MapPin className="w-3 h-3 text-slate-600" />
               {profile.location}
             </span>
+            {profile.linkedin && (
+              <>
+                <span>•</span>
+                <a
+                  href={profile.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-blue-700 hover:underline"
+                >
+                  LinkedIn
+                </a>
+              </>
+            )}
             <span>•</span>
             <span className="text-emerald-800 font-medium">{profile.remoteAvailability}</span>
           </div>

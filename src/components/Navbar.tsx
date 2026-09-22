@@ -16,7 +16,7 @@ export function Navbar({ onTogglePrintView, isPrintView }: NavbarProps) {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      const sections = ['about', 'education', 'abilities', 'terminal', 'contact'];
+      const sections = ['about', 'education', 'experience', 'abilities', 'terminal', 'contact'];
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
@@ -36,6 +36,7 @@ export function Navbar({ onTogglePrintView, isPrintView }: NavbarProps) {
   const navLinks = [
     { name: 'Profile', href: '#about' },
     { name: 'Education', href: '#education' },
+    { name: 'Experience', href: '#experience' },
     { name: 'Practical Abilities', href: '#abilities' },
     { name: 'Terminal', href: '#terminal' },
     { name: 'Contact', href: '#contact' },

@@ -5,11 +5,12 @@ import { InteractiveCanvas } from './components/InteractiveCanvas';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { EducationSection } from './components/EducationSection';
+import { ExperienceSection } from './components/ExperienceSection';
 import { PortfolioSection } from './components/PortfolioSection';
 import { InteractiveTerminal } from './components/InteractiveTerminal';
 import { ContactSection } from './components/ContactSection';
 import { PrintResumeView } from './components/PrintResumeView';
-import { ArrowUp, Mail } from 'lucide-react';
+import { ArrowUp, Mail, Linkedin } from 'lucide-react';
 
 export default function App() {
   const [resumeData] = useState<FullResumeData>(initialResumeData);
@@ -72,6 +73,13 @@ export default function App() {
           <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
         </div>
 
+        {/* PRACTICAL EXPERIENCE */}
+        <ExperienceSection experiences={resumeData.experiences} />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        </div>
+
         {/* PRACTICAL ABILITIES */}
         <PortfolioSection
           portfolioDetails={resumeData.portfolioDetails}
@@ -113,6 +121,7 @@ export default function App() {
           <div className="flex flex-wrap items-center gap-6 text-xs font-mono text-stone-400">
             <a href="#about" className="hover:text-white transition-colors">Profile</a>
             <a href="#education" className="hover:text-white transition-colors">Education</a>
+            <a href="#experience" className="hover:text-white transition-colors">Experience</a>
             <a href="#abilities" className="hover:text-white transition-colors">Practical Abilities</a>
             <a href="#terminal" className="hover:text-white transition-colors">Terminal</a>
             <a href="#contact" className="hover:text-white transition-colors">Contact</a>
@@ -122,6 +131,18 @@ export default function App() {
             <span>© {new Date().getFullYear()} {resumeData.profile.name}</span>
             <span>•</span>
             <div className="flex items-center gap-2">
+              {resumeData.profile.linkedin && (
+                <a
+                  href={resumeData.profile.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-sky-400 transition-colors"
+                  aria-label="LinkedIn Profile"
+                  title="LinkedIn Profile"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+              )}
               <a
                 href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(resumeData.profile.email)}`}
                 target="_blank"

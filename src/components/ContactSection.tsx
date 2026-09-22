@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { ResumeProfile } from '../types';
-import { Mail, Copy, Check, Send, MapPin, Globe, ExternalLink, MessageSquare, Sparkles } from 'lucide-react';
+import { Mail, Copy, Check, Send, MapPin, Globe, ExternalLink, MessageSquare, Sparkles, Linkedin } from 'lucide-react';
 
 interface ContactSectionProps {
   profile: ResumeProfile;
@@ -116,6 +116,21 @@ export function ContactSection({ profile }: ContactSectionProps) {
                   {profile.status}
                 </div>
               </div>
+
+              {profile.linkedin && (
+                <div className="pt-3 border-t border-white/5 flex items-center gap-3">
+                  <a
+                    href={profile.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-xs font-mono text-sky-400 hover:text-sky-300 transition-colors"
+                  >
+                    <Linkedin className="w-4 h-4 text-sky-400" />
+                    <span>LinkedIn Profile</span>
+                    <ExternalLink className="w-2.5 h-2.5" />
+                  </a>
+                </div>
+              )}
             </div>
 
           </div>

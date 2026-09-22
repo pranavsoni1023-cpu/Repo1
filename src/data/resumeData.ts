@@ -10,7 +10,7 @@ export const initialResumeData: FullResumeData = {
     phone: "+91 80056 55458",
     location: "Jaipur, Rajasthan, India",
     remoteAvailability: "Open to Remote Opportunities",
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/pranav1023/",
     portfolio: "",
     github: "",
     status: "Open to Remote Opportunities",

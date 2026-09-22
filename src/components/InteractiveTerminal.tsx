@@ -27,11 +27,21 @@ export function InteractiveTerminal({ data }: InteractiveTerminalProps) {
     }
   ]);
 
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const terminalScrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    if (terminalScrollRef.current) {
+      terminalScrollRef.current.scrollTo({
+        top: terminalScrollRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   }, [history]);
 
   const fallbackAnswer = (query: string): string => {
@@ -294,7 +304,7 @@ Availability: ${data.profile.remoteAvailability}`;
           </div>
 
           {/* Terminal Screen Body */}
-          <div className="p-4 sm:p-6 min-h-[260px] max-h-[420px] overflow-y-auto space-y-3">
+          <div ref={terminalScrollRef} className="p-4 sm:p-6 min-h-[260px] max-h-[420px] overflow-y-auto space-y-3">
             {history.map((item) => (
               <div key={item.id} className="space-y-1">
                 <div className="flex items-center gap-2 text-stone-400">
@@ -328,8 +338,6 @@ Availability: ${data.profile.remoteAvailability}`;
               />
               <CornerDownLeft className="w-3.5 h-3.5 text-stone-500 shrink-0" />
             </div>
-
-            <div ref={bottomRef} />
           </div>
 
           {/* Terminal Footer */}

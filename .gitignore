@@ -1,4 +1,4 @@
-# Logs
+# Logs & Debugging
 logs
 *.log
 npm-debug.log*
@@ -6,13 +6,28 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+sub_agents_debug_*.txt
 
+# Dependencies & Build Output
 node_modules
 dist
 dist-ssr
-*.local
+.vite
+.cache
+.turbo
 
-# Editor directories and files
+# Environment & Sensitive Secrets
+.env
+.env.local
+.env.*.local
+.env.production
+
+# AI Studio Agent Runtime Logs & Artifacts
+run_logs/
+workspace/
+assets/.aistudio/
+
+# Editor & OS Metadata
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -22,3 +37,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.local

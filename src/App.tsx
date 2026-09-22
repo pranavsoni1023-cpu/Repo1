@@ -18,6 +18,13 @@ export default function App() {
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+
     const handleScroll = () => {
       setShowBackToTop(window.scrollY > 400);
     };
